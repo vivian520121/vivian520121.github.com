@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vivian个人博客</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../css/base.css" rel="stylesheet">
+<link href="../../css/index.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../css/article.css"/>
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/sliders.js"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+<!-- 返回顶部调用 begin -->
+<script type="text/javascript" src="../../js/up/jquery.js"></script>
+<script type="text/javascript" src="../../js/up/js.js"></script>
+<!-- 返回顶部调用 end-->
+</head>
+	<body>
+		<header>
+           <div class="logo f_l"> <a href="/"></a> </div>
+           <nav id="topnav" class="f_r">
+            <ul>
+              <a href="../../index.html" target="_blank">首页</a> 
+              <a href="" target="_blank">关于我</a> 
+              <a href="article.html" target="_blank">文章</a>
+              <a href="" target="_blank">心情</a>
+              <a href="" target="_blank">相册</a> 
+              <a href="" target="_blank">留言</a>
+            </ul>
+           <script src="js/nav.js"></script> 
+           </nav>
+        </header>
+        <article>
+  <div class="l_box f_l">
+    <div class="banner">
+      <div id="slide-holder">
+        <div id="slide-runner"> <a href="/" target="_blank"><img id="slide-img-1" src="../../images/a1.jpg"  alt="" /></a> <a href="/" target="_blank"><img id="slide-img-2" src="../../images/a2.jpg"  alt="" /></a> <a href="/" target="_blank"><img id="slide-img-3" src="../../images/a3.jpg"  alt="" /></a> <a href="/" target="_blank"><img id="slide-img-4" src="../../images/a4.jpg"  alt="" /></a>
+          <div id="slide-controls">
+            <p id="slide-client" class="text"><strong></strong><span></span></p>
+            <p id="slide-desc" class="text"></p>
+            <p id="slide-nav"></p>
+          </div>
+        </div>
+      </div>
+      <script>
+	  if(!window.slider) {
+		var slider={};
+	}
+
+	slider.data= [
+    {
+        "id":"slide-img-1", // 与slide-runner中的img标签id对应
+        "client":"标题1",
+        "desc":"这里修改描述 这里修改描述 这里修改描述" //这里修改描述
+    },
+    {
+        "id":"slide-img-2",
+        "client":"标题2",
+        "desc":"add your description here"
+    },
+    {
+        "id":"slide-img-3",
+        "client":"标题3",
+        "desc":"add your description here"
+    },
+    {
+        "id":"slide-img-4",
+        "client":"标题4",
+        "desc":"add your description here"
+    } 
+	];
+
+	  </script> 
+    </div>
+
+  </div>
+  <div class="r_box f_r">
+    <div class="tit01">
+      <h3>关注我</h3>
+      <div class="gzwm">
+        <ul>
+          <li><a class="xlwb" href="#" target="_blank" title="原来是小v啊">新浪微博</a></li>
+        
+          <li><a class="wx" href="hpe_cd_cly@163.com" title="hpe_cd_cly@163.com">邮箱</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--tit01 end-->
+    <div class="ad300x100"> <img src="../../images/ad300x100.jpg"> </div>
+    
+    <!--切换卡 moreSelect end -->
+    
+
+   
+ 
+   
+  </div>
+  	<div class="bg"></div>
+  <div class="article">
+  
+  	 <p class="tit">wxml:</p>
+  	 <img src="../../images/article1/1.png"/>
+  	 <div class="tit">wxss:</div>
+  	 <img src="../../images/article1/2.png"/>
+  	 <div class="tit">js</div>
+  	 <p>
+  	 	  selectDistrict: function (e) {
+  	 	  <br />
+      var that = this
+      <br />
+      if (that.data.addressMenuIsShow) {
+      <br />
+          return
+      }		
+      <br />
+      that.startAddressAnimation(true)
+  },<br />
+  // 执行动画<br />
+  startAddressAnimation: function (isShow) {
+  <br />
+      console.log(isShow)
+      <br />
+      var that = this
+      <br />
+      if (isShow) {
+      <br />
+          that.animation.translateY(0 + 'vh').step()
+      } else {
+          that.animation.translateY(40 + 'vh').step()
+      }
+      <br />		
+      that.setData({
+      <br />
+          animationAddressMenu: that.animation.export(),
+          <br />
+          addressMenuIsShow: isShow,
+          <br />
+      })
+  },
+  <br />
+   // 点击地区选择取消按钮
+   <br />
+  cityCancel: function (e) {
+  <br />
+      this.startAddressAnimation(false)
+  },<br />
+  // 点击地区选择确定按钮
+  <br />
+  citySure: function (e) {
+  <br />
+      var that = this
+      <br />
+      var city = that.data.city
+      <br />
+      var value = that.data.value
+      <br />
+      that.startAddressAnimation(false)
+      <br />
+      // 将选择的城市信息显示到输入框
+      <br />
+      var areaInfo = that.data.provinces[value[0]].Mc + ',' + that.data.citys[value[1]].Mc 
+      <br />
+      console.log(that.data.provinces[value[0]].id)
+      <br />
+      console.log(that.data.citys[value[1]].id)
+      <br />
+      that.setData({
+      <br />
+          areaInfo: areaInfo,
+          <br />
+          c:'',
+          <br />
+          area_Mc:'',
+          <br />
+          province_id: that.data.provinces[value[0]].id,
+          <br />
+          city_id: that.data.citys[value[1]].id
+          <br />
+      })
+      <br />
+  },
+  <br />
+  hideCitySelected: function (e) {
+  <br />
+      console.log(e)
+      this.startAddressAnimation(false)
+      <br />
+  },
+  <br />
+  // 处理省市县联动逻辑
+  <br />
+
+  cityChange: function (e) {
+  <br />
+      
+      var value = e.detail.value
+      <br />
+      var provinces = this.data.provinces
+      <br />
+      var citys = this.data.citys
+      <br />
+      var provinceNum = value[0]
+      <br />
+      var cityNum = value[1]
+      <br />
+      if (this.data.value[0] != provinceNum) {
+      <br />
+          var index = provinceNum
+          <br />
+          this.setData({
+          <br />
+              value: [provinceNum, 0],
+              <br />
+              citys: provinces[index].child,
+              <br />
+          })    
+          <br />
+  }
+  <br />
+        else if (this.data.value[1] != cityNum) {
+        <br />
+          var index = provinceNum
+          <br />
+          this.setData({
+          <br />
+               value: [provinceNum, cityNum],
+               <br />
+           })
+           <br />
+      }
+      <br />
+  },
+  	 	
+  	 </p>
+  	 <div class="tit">最终效果：</div>
+  	 <img src="../../images/article1/3.png"/>
+  </div>
+  <!--r_box end --> 
+</article>
+<footer>
+  <p class="ft-copyright">vivian博客 Design by DanceSmile 蜀ICP备11002373号-1</p>
+  <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
+</footer>
+</body>
+</html>
