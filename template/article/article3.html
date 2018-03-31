@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vivian个人博客</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="../../css/base.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="../../css/article.css"/>
+
+
+<!-- 返回顶部调用 end-->
+</head>
+	<body>
+		<header>
+           <div class="logo f_l"> <a href="/"></a> </div>
+           <nav id="topnav" class="f_r">
+            <ul>
+              <a href="../../index.html">首页</a> 
+              <a href="">关于我</a> 
+              <a href="article.html">文章</a>
+              <a href="">心情</a>
+              <a href="">相册</a> 
+              <a href="">留言</a>
+            </ul>
+           <script src="js/nav.js"></script> 
+           </nav>
+        </header>
+        <article>
+  
+  	<div class="bg">canvas文字换行，转化为图片保存到本地</div>
+  <div class="article">
+  
+  	 <div class="tit">js:</div>
+       <p>
+       	context.setFontsize(14);//设置字体大小
+       	<br />
+       	context.font="bold";
+       	<br />
+       	context.setFillStyle("#000000");//字体颜色
+       	<br />
+       	var linelength=20;
+       	<br />
+       	var text=""
+       	<br />
+       	
+       	var count=0;
+       	<br />
+       	var longtext=that.data.content//文字内容
+       	<br />
+       	var begin_width=10;
+       	<br />
+       	var begin_height=300;//初始位置
+       	<br />
+       	var stringLength=longtext.length
+       	var newtext= longtext.splite("");//将文字转化为数组
+       	<br />
+       	context.clearRect(0,0,600,300);
+       	context.textAlign='left';
+       	<br />
+       	for(var i=o;i<=stringLength;i++){
+       			<br />
+       		if(begin_height<=800){
+       			<br />
+       			//这里限制总高度,可不设置
+       			if(count==25){
+       				<br />
+       				context.fillText(text,begin_width,begin_height)
+       					<br />
+       				begin_height=begin_height+25;
+       					<br />
+       				text="";
+       					<br />
+       				count=0;
+       					<br />
+       			}
+       			if(i==stringLength){
+       				<br />
+       				context.fillText(text,begin_width,begin_height)
+       					<br />
+       			}
+       			var text=text+newtext[0];
+       				<br />
+       			count++;
+       				<br />
+       			newtext.shift();
+       				<br />
+       			
+       		}
+       			<br />
+       	}
+       	context.stroke();
+       		<br />
+       	context.draw();
+       		<br />
+       	setTimeout(function(){
+       		<br />
+       		//将图片保存到本地需要一定时间
+       			<br />
+       		wx.canvasToTempFilePath({
+       			<br />
+       			canvasId:'mycanvas',
+       				<br />
+       			sucess:function(res){
+       				<br />
+       				var tempFilePath=res.tempFilePath;
+       					<br />
+       				that.setData({
+       					<br />
+       					imagePath:tempFilePath,
+       						<br />
+       				})
+       					<br />
+       			},
+       				<br />
+       			fail:function(res){
+       				<br />
+       				
+       			}
+       				<br />
+       		})
+       			<br />
+       	},2000)
+       	
+       	
+       </p>
+  	
+  </div>
+  <!--r_box end --> 
+</article>
+<footer>
+  <p class="ft-copyright">vivian博客 Design by DanceSmile 蜀ICP备11002373号-1</p>
+  <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
+</footer>
+</body>
+</html>
